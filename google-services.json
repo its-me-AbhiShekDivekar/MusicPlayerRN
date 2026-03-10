@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "121383986213",
+    "project_id": "musicplayerrn-ad791",
+    "storage_bucket": "musicplayerrn-ad791.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:121383986213:android:f05051cfca51ee4658cbcc",
+        "android_client_info": {
+          "package_name": "com.reactnative.musicplayerrn"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB8_Vb8V6mfsUYc9owpaUIbBnVLDY7NovQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
