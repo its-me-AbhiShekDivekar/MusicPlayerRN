@@ -1,20 +1,12 @@
 import { Tabs } from "expo-router";
-import React, { useEffect } from "react";
+import React from "react";
 
 import { HapticTab } from "@/components/haptic-tab";
 import { IconSymbol } from "@/components/ui/icon-symbol";
 import { Colors } from "@/constants/theme";
 import { useColorScheme } from "@/hooks/use-color-scheme";
-import {
-  getFCMToken,
-  requestNotificationPermission,
-} from "../../src/utils/firebaseNotification";
 export default function TabLayout() {
   const colorScheme = useColorScheme();
-  useEffect(() => {
-    requestNotificationPermission();
-    getFCMToken();
-  }, []);
   return (
     <Tabs
       screenOptions={{
