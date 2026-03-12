@@ -8,6 +8,7 @@ import { StatusBar } from "expo-status-bar";
 import "react-native-reanimated";
 
 import { useColorScheme } from "@/hooks/use-color-scheme";
+import { createAlarmChannel } from "@/src/notifications/alarmNotification";
 import {
   checkInitialNotification,
   foregroundNotificationListener,
@@ -28,7 +29,7 @@ export default function RootLayout() {
   useEffect(() => {
     requestNotificationPermission();
     getFCMToken();
-
+    createAlarmChannel();
     const unsubscribeForeground = foregroundNotificationListener();
     const unsubscribeOpened = notificationOpenedListener();
     const unsubscribeToken = tokenRefreshListener();

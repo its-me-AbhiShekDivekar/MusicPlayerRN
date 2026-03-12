@@ -33,6 +33,15 @@ export default function TabLayout() {
           ),
         }}
       />
+      <Tabs.Screen
+        name="alarm"
+        options={{
+          title: "Alarm",
+          tabBarIcon: ({ color }) => (
+            <IconSymbol size={28} name="alarm.fill" color={color} />
+          ),
+        }}
+      />
     </Tabs>
   );
 }
