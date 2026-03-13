@@ -9,6 +9,7 @@
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
     "ios": {
+      "googleServicesFile": "./GoogleService-Info.plist",
       "supportsTablet": true,
       "bundleIdentifier": "com.reactnative.musicplayerrn"
     },
@@ -30,6 +31,8 @@
     },
     "plugins": [
       "expo-router",
+      "@react-native-firebase/app",
+      "@react-native-firebase/messaging",
       [
         "expo-build-properties",
         {
@@ -37,6 +40,10 @@
             "extraMavenRepos": [
               "../../node_modules/@notifee/react-native/android/libs"
             ]
+          },
+          "ios": {
+            "useFrameworks": "static",
+            "buildReactNativeFromSource": true
           }
         }
       ],

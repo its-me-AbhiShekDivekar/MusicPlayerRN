@@ -3,7 +3,7 @@ import { scheduleAlarm } from "../../src/notifications/alarmNotification";
 
 export default function TestAlarm() {
   const setAlarm = async () => {
-    const time = Date.now() + 30000; // 10 seconds later
+    const time = Date.now() + 10000; // 10 seconds later
     await scheduleAlarm(time);
   };
 
