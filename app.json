@@ -11,7 +11,10 @@
     "ios": {
       "googleServicesFile": "./GoogleService-Info.plist",
       "supportsTablet": true,
-      "bundleIdentifier": "com.reactnative.musicplayerrn"
+      "bundleIdentifier": "com.reactnative.musicplayerrn",
+      "entitlements": {
+        "aps-environment": "development"
+      }
     },
     "android": {
       "googleServicesFile": "./google-services.json",
@@ -30,6 +33,7 @@
       "favicon": "./assets/images/favicon.png"
     },
     "plugins": [
+      "./plugins/withAndroidSounds.js",
       "expo-router",
       "@react-native-firebase/app",
       "@react-native-firebase/messaging",
@@ -58,7 +62,8 @@
             "backgroundColor": "#000000"
           }
         }
-      ]
+      ],
+      "@react-native-community/datetimepicker"
     ],
     "experiments": {
       "typedRoutes": true,

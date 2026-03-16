@@ -28,6 +28,7 @@ export async function requestNotificationPermission(): Promise<void> {
  * Get FCM token
  */
 export async function getFCMToken(): Promise<string | null> {
+  let apn = await messaging().getAPNSToken();
   const token = await messaging().getToken();
   console.log("FCM Token:", token);
   return token;

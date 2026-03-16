@@ -1,15 +1,53 @@
-import { Button, View } from "react-native";
-import { scheduleAlarm } from "../../src/notifications/alarmNotification";
+import { AlarmItem } from "@/src/components/alarm/AlarmItem";
+import { DatePickerModal } from "@/src/components/alarm/DatePickerModal";
+import { AppButton } from "@/src/components/common/AppButton";
+import { AppHeader } from "@/src/components/common/AppHeader";
+import { useAlarms } from "@/src/hooks/useAlarms";
+import { useAppTheme } from "@/src/hooks/useAppTheme";
+import { RepeatInterval } from "@/src/types/alarmTypes";
+import React, { useState } from "react";
+import { FlatList, View } from "react-native";
 
-export default function TestAlarm() {
-  const setAlarm = async () => {
-    const time = Date.now() + 10000; // 10 seconds later
-    await scheduleAlarm(time);
+export default function AlarmScreen() {
+  const { theme, spacing, insets } = useAppTheme();
+  const { alarms, addAlarm, deleteAlarm } = useAlarms();
+  const [isModalVisible, setModalVisible] = useState(false);
+
+  const handleConfirmAlarm = (selectedDate: Date, repeat: RepeatInterval) => {
+    addAlarm(selectedDate, "Alarm", repeat);
+    setModalVisible(false);
   };
 
   return (
-    <View style={{ marginTop: 100 }}>
-      <Button title="Set Alarm (10s)" onPress={setAlarm} />
+    <View style={{ flex: 1, backgroundColor: theme.background }}>
+      <AppHeader
+        title="Alarms"
+        rightElement={
+          <AppButton
+            title="Add"
+            icon="add"
+            onPress={() => setModalVisible(true)}
+          />
+        }
+      />
+
+      <FlatList
+        data={alarms}
+        keyExtractor={(item) => item.id}
+        contentContainerStyle={{
+          padding: spacing.medium,
+          paddingBottom: insets.bottom,
+        }}
+        renderItem={({ item }) => (
+          <AlarmItem alarm={item} onToggle={() => {}} onDelete={deleteAlarm} />
+        )}
+      />
+
+      <DatePickerModal
+        isVisible={isModalVisible}
+        onClose={() => setModalVisible(false)}
+        onConfirm={handleConfirmAlarm}
+      />
     </View>
   );
 }

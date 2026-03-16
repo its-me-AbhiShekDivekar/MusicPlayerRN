@@ -1,7 +1,8 @@
 import notifee, {
-    AndroidImportance,
-    TimestampTrigger,
-    TriggerType,
+  AndroidImportance,
+  AndroidNotificationSetting,
+  TimestampTrigger,
+  TriggerType,
 } from "@notifee/react-native";
 
 /**
@@ -13,6 +14,18 @@ export async function createAlarmChannel() {
     name: "Alarm Channel",
     importance: AndroidImportance.HIGH,
   });
+}
+
+export async function setupNotifications() {
+  // 1. Request basic notification permission
+  await notifee.requestPermission();
+
+  // 2. Handle Exact Alarm permission for Android
+  const settings = await notifee.getNotificationSettings();
+  if (settings.android.alarm === AndroidNotificationSetting.DISABLED) {
+    // Correct API function name
+    await notifee.openAlarmPermissionSettings();
+  }
 }
 
 /**
